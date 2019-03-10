@@ -1,2 +1,13 @@
-<h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p>
+<h1>Nowy artykuł</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @article do |f| %>
+      <p>Tytuł:</p>
+      <%= f.text_field :title %>
+      <p>Treść:</p>
+      <%= f.trix_editor :content %>
+      <%= f.submit "Dodaj artykuł", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
