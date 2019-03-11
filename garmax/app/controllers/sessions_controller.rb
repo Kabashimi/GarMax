@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to article_url if logged_in?
+    redirect_to articles_index_url if logged_in?
   end
 
   def create

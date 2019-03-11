@@ -20,6 +20,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    puts params
+    @article = Article.find(params[:format])
   end
 
   def index

@@ -14,3 +14,17 @@
  *= require_self
  *= require trix
  */
+
+
+.border {
+    border-style: solid;
+    border-width: thin;
+    border-color: #337ab7;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #337ab7;
+}
