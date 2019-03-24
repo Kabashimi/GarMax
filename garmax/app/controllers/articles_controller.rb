@@ -22,6 +22,23 @@ class ArticlesController < ApplicationController
   def show
     puts params
     @article = Article.find(params[:format])
+    @comments = @article.comments
+    @user = current_user
+  end
+
+  def add_comment
+    puts params
+    comment = Comment.new(
+        user_id: current_user.id,
+        content: params[:comment][:content],
+        article_id: params[:comment][:article_id]
+        )
+    if comment.save
+      flash[:success] = "Dodano komentarz"
+    else
+      flash[:error] = "Błąd zapisu!"
+    end
+    redirect_to article_path params[:comment][:article_id], format: params[:comment][:article_id]
   end
 
   def index

@@ -4,3 +4,24 @@
     <%= @article.content.html_safe %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Komentarze</h3>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <% @comments.each do |comment| %>
+      <%= comment.content %>
+    <% end %>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Dodaj komentarz</h3>
+    <% if @current_user.present? %>
+      <%= form_for :comment do |f| %>
+        <%= f.hidden_field :article_id, value: @article.id %>
+        <%= f.text_area :content ,class: 'form-control', :required => true %>
+        <%= f.submit "Dodaj komentarz", class: 'btn btn-primary col-md-12 center' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

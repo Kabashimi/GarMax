@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :articles
 
+  post 'articles/show', to: 'articles#add_comment'
   post '/signup',  to: 'users#create'
 
   get    '/login',   to: 'sessions#new'
