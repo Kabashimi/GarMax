@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'articles/index'
   get 'articles/delete'
   get 'articles/edit'
-  root 'sessions#new'
+  root 'articles#index'
 
   get 'sessions/new'
   get 'users/new'

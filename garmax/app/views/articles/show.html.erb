@@ -11,21 +11,23 @@
   </div>
   <div class="col-md-8 col-md-offset-2">
     <% @comments.each do |comment| %>
-      <div class="border">
-      <div class="pull-right"><%= comment.created_at.to_datetime.in_time_zone.strftime("%k:%M - %m/%d/%Y") %></div>
+      <div class="border-grey">
+        <div class="pull-right"><%= comment.created_at.to_datetime.in_time_zone.strftime("%k:%M - %m/%d/%Y") %></div>
         <h4><%= comment.user.name %></h4>
         <%= comment.content %>
       </div>
     <% end %>
   </div>
   <div class="col-md-8 col-md-offset-2">
-    <h3>Dodaj komentarz</h3>
     <% if @current_user.present? %>
+      <h3>Dodaj komentarz</h3>
       <%= form_for :comment do |f| %>
         <%= f.hidden_field :article_id, value: @article.id %>
         <%= f.text_area :content, class: 'form-control', :required => true %>
         <%= f.submit "Dodaj komentarz", class: 'btn btn-primary col-md-12 center' %>
       <% end %>
+    <% else %>
+      <h3>Musisz się zalogować aby dodawać komentarze</h3>
     <% end %>
   </div>
 </div>
