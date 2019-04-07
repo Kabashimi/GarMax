@@ -1,1 +1,12 @@
-<%= @user.name %>, <%= @user.email %>
+<div class="row">
+  <div class="col-sm-4" style="border-right: 5px dotted black;">
+    <h2><%= @user.name %></h2>
+    <h3><%= @user.email %></h3>
+  </div>
+  <div class="col-sm-6">
+    <h5>Wyświetlone artykuły:</h5>
+    <% @visited_articles.each do |article| %>
+      <h4><%= link_to "·"+Article.find(article.article_id).title, articles_show_url(article.article_id) %></h4>
+    <% end %>
+  </div>
+</div>
