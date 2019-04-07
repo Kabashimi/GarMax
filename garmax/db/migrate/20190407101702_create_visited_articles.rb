@@ -3,6 +3,7 @@ class CreateVisitedArticles < ActiveRecord::Migration[5.2]
     create_table :visited_articles do |t|
       t.references :user, foreign_key: true
       t.references :article, foreign_key: true
+      t.integer :note
 
       t.timestamps
     end

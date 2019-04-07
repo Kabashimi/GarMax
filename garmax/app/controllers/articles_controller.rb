@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
         user_id: current_user.id,
         content: params[:comment][:content],
         article_id: params[:comment][:article_id]
-        )
+    )
     if comment.save
       flash[:success] = "Dodano komentarz"
     else
@@ -45,8 +45,18 @@ class ArticlesController < ApplicationController
     redirect_to article_path params[:comment][:article_id], format: params[:comment][:article_id]
   end
 
+  def rate
+    puts params
+    visited = VisitedArticle.find_by(:user_id => current_user.id, :article_id => params[:article])
+    visited.note = params[:rate]
+    visited.save
+    flash[:success] = "Dodano ocenę"
+    redirect_to article_path params[:article], format: params[:article]
+  end
+
   def index
     @articles = Article.all
+    @user = current_user
   end
 
   def delete

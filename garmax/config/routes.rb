@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :articles
 
   post 'articles/show', to: 'articles#add_comment'
+  post 'article/rate', to: 'articles#rate'
   post '/signup',  to: 'users#create'
 
   get    '/login',   to: 'sessions#new'

@@ -9,5 +9,8 @@
         <h3><%= article.title %></h3>
       </div>
     <% end %>
+    <% if @user && @user.id == 1 %>
+      <%= link_to "Dodaj artykuł", articles_new_url, class: 'btn btn-primary center-block', style: "margin-top: 45px" %>
+    <%end %>
   </div>
 </div>
