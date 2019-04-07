@@ -13,14 +13,14 @@
 ActiveRecord::Schema.define(version: 2019_04_07_101702) do
 
   create_table "articles", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
+    t.text "content", limit: 4294967295
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", options: "ENGINE=MyISAM DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.bigint "user_id"
     t.bigint "article_id"
     t.datetime "created_at", null: false
