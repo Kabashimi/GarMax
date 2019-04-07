@@ -24,7 +24,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:format])
     @comments = @article.comments
     @user = current_user
-    @visited = VisitedArticle.where(:user_id => @user.id, :article_id => @article.id).first_or_create
+    @visited = VisitedArticle.where(:user_id => @user.id, :article_id => @article.id).first
+    unless @visited.present?
+      VisitedArticle.create(:user_id => @user.id, :article_id => @article.id)
+    end
   end
 
   def add_comment
