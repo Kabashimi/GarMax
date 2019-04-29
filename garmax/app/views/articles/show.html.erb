@@ -10,25 +10,31 @@
 
 <% if @user.present? %>
   <div class="row">
-    <div class="col md-6 col-md-offset-3">
-      <h4 STYLE="color: #337ab7">Oceń artykuł: </h4>
-    </div>
-    <div class="col md-3 col-md-offset-6">
+    <% unless @visited.present? && @visited.note.present? %>
+      <div class="col md-6 col-md-offset-3">
+        <h4 STYLE="color: #337ab7">Oceń artykuł: </h4>
+      </div>
+      <div class="col md-3 col-md-offset-6">
 
-      <%= form_tag(article_rate_path(:article => @article.id), {method: :post}) do %>
-        <%= radio_button_tag 'rate', '1' %>
-        <label>1 </label>
-        <%= radio_button_tag 'rate', '2' %>
-        <label>2 </label>
-        <%= radio_button_tag 'rate', '3' %>
-        <label>3 </label>
-        <%= radio_button_tag 'rate', '4' %>
-        <label>4 </label>
-        <%= radio_button_tag 'rate', '5' %>
-        <label>5 </label>
-        <%= submit_tag 'Zapisz ocenę' %>
-      <% end %>
-    </div>
+        <%= form_tag(article_rate_path(:article => @article.id), {method: :post}) do %>
+          <%= radio_button_tag 'rate', '1' %>
+          <label>1 </label>
+          <%= radio_button_tag 'rate', '2' %>
+          <label>2 </label>
+          <%= radio_button_tag 'rate', '3' %>
+          <label>3 </label>
+          <%= radio_button_tag 'rate', '4' %>
+          <label>4 </label>
+          <%= radio_button_tag 'rate', '5' %>
+          <label>5 </label>
+          <%= submit_tag 'Zapisz ocenę' %>
+        <% end %>
+      </div>
+      <% else %>
+      <div class="col md-6 col-md-offset-3">
+        <h4 STYLE="color: #337ab7">Artykuł oceniono na <strong><%= @visited.note %></strong> </h4>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
