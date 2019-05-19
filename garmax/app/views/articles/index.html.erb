@@ -14,3 +14,11 @@
     <%end %>
   </div>
 </div>
+
+
+<div class="row">
+  <div class="col-md-8">
+    <%= will_paginate @posts %>
+    <%#= will_paginate @articles , renderer: RemoteLinkPagination::LinkRenderer %>
+  </div>
+</div>
